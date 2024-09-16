@@ -5,12 +5,12 @@ import React, { useState } from "react";
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="p-12">
+    <div className="content-center">
       <div
         onClick={() => {
           setIsOpen((prev) => !prev);
         }}
-        className="flex flex-col gap-[4.5px] cursor-pointer"
+        className="flex flex-col gap-[4.5px]  cursor-pointer"
       >
         <div
           className={`w-6 h-1 bg-blue-500 rounded-sm origin-left transition-all duration-300 ${

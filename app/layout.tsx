@@ -3,6 +3,16 @@ import localFont from "next/font/local";
 import NavBar from "./components/NavBar";
 import "./globals.css";
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+
+import Navbar from "./components/NavBar";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,17 +33,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="light"
-      style={{
-        colorScheme: "light",
-      }}
-    >
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NavBar />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className="light"
+        style={{
+          colorScheme: "light",
+        }}
+      >
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <div className="w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+            <Navbar />
+          </div>
+          <div className=" bg-slate-100 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+            {children}
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
